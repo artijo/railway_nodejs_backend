@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import { Client } from 'pg';
+import pkg from 'pg';
+const { Client } = pkg;
 import dotenv from 'dotenv';
 
 // dotenv
@@ -21,7 +22,11 @@ const client
     port: process.env.DB_PORT,
   });
 
-client.connect();
+client.connect().then(() => {
+  console.log('Connected to the database');
+}).catch((err) => {
+  console.log('Error: ' + err);
+});
 
 // Routes
 app.get('/', (req, res) => {
