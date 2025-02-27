@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.get('/u', async (req, res) => {
+  res.send('Hell');
+});
+
 app.get('/users', async (req, res) => {
     const { rows } = await client.query('SELECT * FROM users');
     res.json(rows);
