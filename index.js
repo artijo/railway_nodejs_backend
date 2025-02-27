@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
     const { rows } = await client.query('SELECT * FROM users');
-    res.send(rows);
+    res.json(rows);
     });
 
 app.post('/users', async (req, res) => {
