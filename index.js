@@ -41,7 +41,7 @@ app.get('/users', async (req, res) => {
 app.post('/users', async (req, res) => {
     const { name, email } = req.body;
     await client.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email]);
-    res.send('User added');
+    res.json({massage:"User added successfully"});
     });
 
 app.listen(process.env.PORT, () => {
